@@ -1,5 +1,6 @@
 const cookieParser=require("cookie-parser")
 const express=require("express")
+const userRoutes=require("./Routes/userRoute")
 
 require('dotenv').config()
 
@@ -12,7 +13,7 @@ app.use(express.urlencoded({extended:true}))
 //cookie middleware
 app.use(cookieParser())
 
-
+app.use('/api',userRoutes)
 app.get('/',(req,res)=>{
     res.send("Hello from server!!")
 })

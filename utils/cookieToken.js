@@ -2,8 +2,8 @@ const getJwtToken=require("../helpers/getJwtToken")
 
 
 const cookieToken = (user,res)=>{
-    const token=getJwtToken(userId);
-    const option={
+    const token=getJwtToken(user.id);
+    const options={
         expires:new Date(
             Date.now()+3*24*60*60*1000
         ),
@@ -13,7 +13,7 @@ const cookieToken = (user,res)=>{
     res.status(200).cookie('token',token, options).json({
         success:true,
         token,
-        user
+        user // This gives response of user details ..yedi yo line hatayo vane user.password wala line narakhda nee hunchha..
     })
 }
 
